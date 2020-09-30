@@ -10,7 +10,7 @@ def print_board():
     for i in board:
         end = ' | '
         if x%3 == 0:
-            end = ' '
+            end = '\n'
             if i != 1: end+='---------\n';
         char=' '
         if i in ('X','O'): char=i;
@@ -24,7 +24,7 @@ def select_char():
 def can_move(brd, player, move):
     if move in tab and brd[move-1] == move-1:
         return True
-        return False
+    return False
 def can_win(brd, player, move):
     places=[]
     x=0
@@ -50,9 +50,9 @@ def make_move(brd, player, move, undo=False):
         return (True, win)
     return (False, False)
 def computer_move():
-    move=1
+    move=-1
     // If I can win, others do not matter.
-    for i in range(1,9):
+    for i in range(1,10):
         if make_move(board, computer, i, True)[1]:
             move=i
             break
